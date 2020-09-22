@@ -35,8 +35,35 @@ Knex type is: function
 On Windows systems this bug results in:
 
 ```
-TODO
+$ npm run exec
+
+> ncc-bug-1@0.0.0 exec C:\code\urbdyn\ncc-bug-1
+> node dist/index.js
+
+C:\code\urbdyn\ncc-bug-1\dist\index.js:56172
+  const newKnex = makeKnex(new Dialect(config));
+                           ^
+
+TypeError: Dialect is not a constructor
+    at Knex (C:\code\urbdyn\ncc-bug-1\dist\index.js:56172:28)
+    at doTest (C:\code\urbdyn\ncc-bug-1\dist\index.js:146952:34)
+    at Module.63899 (C:\code\urbdyn\ncc-bug-1\dist\index.js:146969:1)
+    at __webpack_require__ (C:\code\urbdyn\ncc-bug-1\dist\index.js:147637:43)
+    at C:\code\urbdyn\ncc-bug-1\dist\index.js:147706:18
+    at Object.<anonymous> (C:\code\urbdyn\ncc-bug-1\dist\index.js:147707:12)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! ncc-bug-1@0.0.0 exec: `node dist/index.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the ncc-bug-1@0.0.0 exec script.
+npm ERR! This is probably not a problem with npm. There is likely additional 
 ```
+
 
 
 ## Initial triage
@@ -60,8 +87,20 @@ function __ncc_wildcard$0 (arg) {
 }
 ```
 
-For a buggy ncc output on windows we get the results in [`dist-windows/index.js` starting on line TODO](dist-windows/index.js)
+For a buggy ncc output on windows we get the results in [`dist-windows/index.js` starting on line 56107](dist-windows/index.js)
 
-```
-TODO
+```js
+/***/ 71330:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+function __ncc_wildcard$0 (arg) {
+  if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(19427);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(75941);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(17653);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(9051);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(25310);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(64482);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(97332);
+  else if (arg === "C:/code/urbdyn/ncc-bug-1/node_modules/knex/lib/dialects/") return __webpack_require__(85370);
+}
 ```
