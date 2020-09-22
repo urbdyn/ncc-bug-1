@@ -1,0 +1,21 @@
+{
+  "name": "ncc-bug-1",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/index",
+  "scripts": {
+    "clean": "rm -rf ./dist/",
+    "ncc": "ncc build src/index.js -o dist/",
+    "exec": "node dist/index.js"
+  },
+  "dependencies": {
+    "knex": "^0.21.1",
+    "mssql": "^6.2.0",
+    "oracledb": "^4.2.0",
+    "pg": "^8.2.1",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.24.1"
+  }
+}
